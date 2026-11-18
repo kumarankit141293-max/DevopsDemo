@@ -1,19 +1,25 @@
+#This is github action workflow if PR comes
 name: PR Validation
 
 on:
   pull_request:
     types:
       - opened
+#      - when new commit push in pr
       - synchronize
       - reopened
 
 jobs:
   validation:
     runs-on: ubuntu-latest
-
+#validation is jobs name
     steps:
+#      - name in github ui as Checkout Code
       - name: Checkout Code
+#        Repository source code inside VM download.
+#        if this step not there then workflow cant see the project code
         uses: actions/checkout@v4
 
       - name: Print Message
         run: echo "PR Validation Triggered Successfully"
+#        inside ubuntu server this command will run
